@@ -1,0 +1,80 @@
+.leaflet-container {
+    width: 100%;
+    height: 100%;
+}
+
+.add-location-wrapper {
+    width: 400px;
+}
+
+.container {
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dropzone {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-width: 2px;
+    border-radius: 2px;
+    border-color: black;
+    border-style: dashed;
+    background-color: #485F6E;
+    color: #86989B;
+    outline: none;
+}
+
+.inner_font {
+    font-size: 20px;
+}
+
+.menu-box {
+    position: fixed;
+    background-color: white;
+    z-index: 1000;
+    border-radius: 15px;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    padding: 5px;
+    margin-top: 190px;
+    border: black;
+    border-style: groove;
+    border-width: 3px;
+}
+
+.menu-button-download {
+    margin-top: 50px;
+    margin-left: 5px;
+}
+
+.menu-button-help {
+    margin-top: 50px;
+    margin-left: 10px;
+}
+
+.button-box {
+    position: fixed;
+    z-index: 1000;
+}
+
+.modalStyleBody {
+    font-size: 20px;
+}
+
+.header-box {
+    position: fixed;
+    width: 100%;
+    height: 35px;
+    z-index: 1000;
+    background-color: white;
+}
+
+.headertext {
+    text-align: center;
+    font-size: 24px;
+}

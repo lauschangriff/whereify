@@ -1,13 +1,13 @@
 import React from 'react';
 import MapView from './components/MapView';
-import './index.css';
+import './index.scss';
 
-function App() {
+function Merger() {
     return (
-        <div className="App">
+        <div className="Merger">
             <MapView/>
         </div>
     );
 }
 
-export default App;
+export default Merger;
