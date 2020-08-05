@@ -1,5 +1,5 @@
 #!/bin/bash
 
 cd fe &&
-run npm build &&
+npm run build &&
 cp -r build /var/www/html
