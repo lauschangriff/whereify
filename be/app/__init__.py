@@ -1,41 +1,11 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from pymongo import MongoClient
 from bson.json_util import dumps
-from be.initSampleData import SampleData
 from be.worker.path import Points
 
 app = Flask(__name__)
 CORS(app)
 
-client = MongoClient(host='localhost', port=27017)
-db = client.wherify
-SampleData.addSampleData()
-
-
-@app.route('/locations/neuried', methods=['GET'])
-def route_get_locations_neuried():
-    res = db.locations.find({'layer': 'neuried'})
-    return dumps(list(res))
-
-
-@app.route('/locations/fuerstenried_west', methods=['GET'])
-def route_get_locations_fuewest():
-    res = db.locations.find({'layer': 'fuerstenried_west'})
-    return dumps(list(res))
-
-
-@app.route('/locations/add', methods=['POST'])
-def route_post_add_location():
-    data = request.get_json()
-    location = {
-        'latlng': data['latlng'],
-        'title': data['title'],
-        'desc': data['desc'],
-        'layer': data['layer']
-    }
-    db.locations.insert_one(location)
-    return jsonify(success=True)
 
 
 @app.route('/trackdata/merge', methods=['POST'])
