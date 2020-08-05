@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from pymongo import MongoClient
-from be.initSampleData import SampleData
 from bson.json_util import dumps
-from be.path import Points
+from be.initSampleData import SampleData
+from be.worker.path import Points
 
 app = Flask(__name__)
 CORS(app)
@@ -80,5 +80,4 @@ def route_get_merged_file():
     return gpxString
 
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=7223)
+app.run(host="0.0.0.0", port=7223)

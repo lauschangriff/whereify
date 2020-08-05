@@ -51,9 +51,6 @@ class Points:
                                     if 'time' in el.tag:
                                         trkdict["time"] = el.text
                             trks.append(trkdict)
-
-        print(trks)
-
         return trks
 
 
