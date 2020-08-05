@@ -36,7 +36,7 @@ function MapView() {
             acceptedFiles[0],
             acceptedFiles[0].name
         );
-        axios.post("0.0.0.0:7223/locations/pathweb", formData)
+        axios.post("85.214.102.235:7223/locations/pathweb", formData)
             .then((response) => {
                 let gpxData = response.data;
                 let firstCoordinates = gpxData[0];
@@ -60,7 +60,7 @@ function MapView() {
             fd.append('file', k, k.name);
         }
 
-        axios.post("0.0.0.0:7223/locations/createmergedfile", fd)
+        axios.post("85.214.102.235:7223/locations/createmergedfile", fd)
             .then((response) => {
                 let data = new Blob([response.data], {type: 'text/xml'});
                 const element = document.createElement("a");
