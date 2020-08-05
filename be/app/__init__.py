@@ -47,4 +47,5 @@ def route_get_merged_file():
     return gpxString
 
 
-app.run(host="0.0.0.0", port=7223)
+if __name__ == "__main__":
+    app.run()

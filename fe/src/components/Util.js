@@ -42,7 +42,7 @@ export const getLatLngCenter = (userTracks) => {
 }
 
 export const getBackendHost = () => {
-    let port = 7223;
+    let port = 5000;
 
     if (window.location.host.includes("localhost")) {
         return "localhost:" + port;
