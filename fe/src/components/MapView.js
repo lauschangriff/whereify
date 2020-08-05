@@ -11,7 +11,7 @@ const {BaseLayer} = LayersControl
 
 function MapView() {
 
-    const host = location.hostname;
+    const host = window.location.hostname;
     axios.defaults.baseURL = host;
     axios.defaults.port = 7223;
 
