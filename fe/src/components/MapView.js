@@ -4,7 +4,7 @@ import axios from 'axios';
 import Dropzone from 'react-dropzone'
 import {Button, Modal} from "react-bootstrap";
 import GPXPolylines from "./GPXPolylines";
-import {getLatLngCenter} from "./Util";
+import {getBackendHost, getLatLngCenter} from "./Util";
 
 
 const {BaseLayer} = LayersControl
@@ -19,13 +19,12 @@ function MapView() {
     const [showHelp, setShowHelp] = useState(false);
     const [showFeatures, setShowFeatures] = useState(false);
 
+
     useEffect(() => {
-        console.log('trigger current location effect hook');
         setCurrentLocation(currentLocation);
     }, [currentLocation]);
 
     useEffect(() => {
-        console.log('trigger userTrackData effect hook');
     }, [userTrackData]);
 
 
@@ -36,7 +35,7 @@ function MapView() {
             acceptedFiles[0],
             acceptedFiles[0].name
         );
-        axios.post("http://85.214.102.235:7223/locations/pathweb", formData)
+        axios.post("http://" + getBackendHost() + "/locations/pathweb", formData)
             .then((response) => {
                 let gpxData = response.data;
                 let firstCoordinates = gpxData[0];
@@ -60,7 +59,7 @@ function MapView() {
             fd.append('file', k, k.name);
         }
 
-        axios.post("http://85.214.102.235:7223/locations/createmergedfile", fd)
+        axios.post("http://" + getBackendHost() + "/locations/createmergedfile", fd)
             .then((response) => {
                 let data = new Blob([response.data], {type: 'text/xml'});
                 const element = document.createElement("a");

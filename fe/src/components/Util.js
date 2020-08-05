@@ -1,5 +1,3 @@
-import React from "react";
-
 const rad2degr = (rad) => {
     return rad * 180 / Math.PI;
 }
@@ -41,4 +39,14 @@ export const getLatLngCenter = (userTracks) => {
     let lat = Math.atan2(avgZ, hyp);
 
     return ([rad2degr(lat), rad2degr(lng)]);
+}
+
+export const getBackendHost = () => {
+    let port = 7223;
+
+    if (window.location.host.includes("localhost")) {
+        return "localhost:" + port;
+    } else {
+        return "85.214.102.235:" + port;
+    }
 }
