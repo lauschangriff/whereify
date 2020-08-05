@@ -124,17 +124,19 @@ function MapView() {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body className="modalStyleBody">
-                        <p>GPX Dateien einfach per Klick auf die angezeigte Fläche oder per Drag n`Drop
-                            hinzufügen und die einzelnen Tracks werden auf der Karte angezeigt</p>
-                        <p><strong>Download:</strong> Werden mindestens 2 Tracks hochgeladen, kannst du diese
-                            anschließend als ein GPX File mit allen Daten herunterladen.</p>
-                        <p><strong>Reihenfolge:</strong> Die Reihenfolge des Hochladens ist bestimmend für das Ergebnis
-                            des Merges. Die Dateien sollten örtlich zusammen hängen.</p>
-                        <p><strong>Beispiel:</strong> Du hast eine Alpenüberquerung hinter dir und z.B. mit deinem <a
-                            href="https://www.amazon.com/-/de/dp/B07HYX9P88/ref=sr_1_2?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=garmin&qid=1596441819&sr=8-2">Garmin
-                            Gerät</a> 10 verschiedene GPX-Tracks aufgezeichnet. Wenn du nun gerne deine Tour als einen
-                            einzigen Track mit deinen Freunden teilen willst, dann kannst du hier aus deinen Erlebnissen
-                            eine zusammengefasste Aufzeichnung machen.</p>
+                        <p>Es werden keine persönlichen Daten gesammelt bzw. gespeichert</p>
+                        <p>- keine Cookies!</p>
+                        <p>- JS muss aktiviert sein</p>
+
+                        <p>Bei Fragen schreib mir eine Email an: blabla@email.de</p>
+
+                        <div className='impressum'>
+                            <h1>Impressum</h1>
+                            <p>Angaben gemäß § 5 TMG</p>
+                            <p>Alexander Lotz <br/>
+                                Argelsrieder Straße 52<br/>
+                                81475 München</p>
+                        </div>
                     </Modal.Body>
                 </Modal>
                 <Modal
@@ -183,7 +185,7 @@ function MapView() {
                 <GPXPolylines userTrackData={userTrackData}/>
             </Map>
         </div>
-    )
+)
 
 }
 
