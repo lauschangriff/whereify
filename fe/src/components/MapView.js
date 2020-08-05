@@ -11,11 +11,6 @@ const {BaseLayer} = LayersControl
 
 function MapView() {
 
-    axios.defaults.baseURL = "127.0.0.1";
-    axios.defaults.port = 7223;
-
-
-
     const [zoom] = useState(10);
     const [currentLocation, setCurrentLocation] = useState([48.082898, 11.474817]);
     const [userTrackData] = useState([]);
@@ -41,7 +36,7 @@ function MapView() {
             acceptedFiles[0],
             acceptedFiles[0].name
         );
-        axios.post("/locations/pathweb", formData)
+        axios.post("0.0.0.0:7223/locations/pathweb", formData)
             .then((response) => {
                 let gpxData = response.data;
                 let firstCoordinates = gpxData[0];
@@ -65,7 +60,7 @@ function MapView() {
             fd.append('file', k, k.name);
         }
 
-        axios.post("/locations/createmergedfile", fd)
+        axios.post("0.0.0.0:7223/locations/createmergedfile", fd)
             .then((response) => {
                 let data = new Blob([response.data], {type: 'text/xml'});
                 const element = document.createElement("a");
