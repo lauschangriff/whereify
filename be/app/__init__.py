@@ -24,10 +24,7 @@ def route_get_path():
 
 @app.route('/locations/pathweb', methods=['POST'])
 def route_get_path_web():
-    print("/locations/pathweb ->")
     file = request.files['file']
-    filename = file.filename
-    print(filename)
     res = Points.get_path_from_web(file)
     return dumps(res)
 
