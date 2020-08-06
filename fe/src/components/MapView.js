@@ -19,8 +19,16 @@ function MapView() {
     const [showHelp, setShowHelp] = useState(false);
     const [showFeatures, setShowFeatures] = useState(false);
 
+    let firstLoad = true;
+
 
     useEffect(() => {
+        if (firstLoad) {
+            axios.get("http://" + getBackendHost() + "/stats/user")
+                .then((response) => {
+                    console.log("visit count!")
+                });
+        }
         setCurrentLocation(currentLocation);
     }, [currentLocation]);
 
@@ -185,7 +193,7 @@ function MapView() {
                 <GPXPolylines userTrackData={userTrackData}/>
             </Map>
         </div>
-)
+    )
 
 }
 

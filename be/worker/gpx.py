@@ -1,6 +1,7 @@
 import lxml.etree as etree
 
-class Points:
+
+class GPX:
 
     @staticmethod
     def get_path():
@@ -36,7 +37,6 @@ class Points:
         root = doc.getroot()
         trks = []
 
-
         # iterate through all
         for child in root:
             if 'trk' in child.tag:
@@ -52,7 +52,6 @@ class Points:
                                         trkdict["time"] = el.text
                             trks.append(trkdict)
         return trks
-
 
     @staticmethod
     def get_gpx_head(name):

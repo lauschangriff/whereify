@@ -1,10 +1,19 @@
 from pymongo import MongoClient
+import datetime
 
 
-class SampleData:
+class MongoDBWorker:
 
     @staticmethod
-    def addSampleData():
+    def handle_page_visit():
+        client = MongoClient(host='127.0.0.1', port=27017)
+        db = client.wherify
+        usercount = db.usercount
+        countitem = {"date": datetime.datetime.utcnow()}
+        usercount.insert_one(countitem)
+
+    @staticmethod
+    def add_sample_data():
         client = MongoClient(host='localhost', port=27017)
         db = client.wherify
         location1 = {
