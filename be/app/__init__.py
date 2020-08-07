@@ -3,6 +3,7 @@ from flask_cors import CORS
 from bson.json_util import dumps
 from be.worker.gpx import GPX
 from be.worker.mongodb import MongoDBWorker
+from be.worker.distanceutil import DistanceUtil
 
 app = Flask(__name__)
 CORS(app)
@@ -23,8 +24,10 @@ def route_get_path():
 @app.route('/locations/pathweb', methods=['POST'])
 def route_get_path_web():
     file = request.files['file']
-    res = GPX.get_path_from_web(file)
-    return dumps(res)
+    trkpts = GPX.get_path_from_web(file)
+    distance = DistanceUtil.calculate_distance_of_track(trkpts)
+    response = {"distance": distance, "points": trkpts}
+    return dumps(response)
 
 
 @app.route('/stats/user', methods=['GET'])
