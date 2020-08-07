@@ -2,10 +2,10 @@ import React, {useState, useEffect} from 'react';
 import {Map, ZoomControl, TileLayer, LayersControl} from 'react-leaflet';
 import axios from 'axios';
 import Dropzone from 'react-dropzone'
-import {Button, Modal, Image, ListGroup} from "react-bootstrap";
+import {Button, Modal, Image, ListGroup, Navbar, Nav} from "react-bootstrap";
 import GPXPolylines from "./GPXPolylines";
 import {getBackendHost, getLatLngCenter} from "./Util";
-import logo from '../assets/title.png'
+import logo from '../assets/logo.png'
 
 
 const {BaseLayer} = LayersControl
@@ -58,7 +58,7 @@ function MapView() {
                     points: gpxData,
                     name: acceptedFiles[0].name
                 }
-                setZoom(11);
+                setZoom(12);
                 userTrackData.push(gpxObject);
                 setCurrentLocation(getLatLngCenter(userTrackData));
                 files.push(acceptedFiles[0]);
@@ -86,31 +86,20 @@ function MapView() {
 
     return (
         <div>
-            <style type="text/css">
-                {`
-
-    .btn-xxl {
-      font-size: 2rem;
-    }
-    `}
-            </style>
-            <div className="header-box">
-                <Image src={logo} rounded/>
-            </div>
-            <div className="button-box">
-                <Button className="menu-button-help" size="xxl" variant="primary"
-                        onClick={() => setShowHelp(true)}>Info</Button>
-                <Button className="menu-button-download" size="xxl" variant="primary"
-                        onClick={() => setShowFeatures(true)}>Features</Button>
-                <Button className={files.length < 1 ? "menu-button-download invisible" : "menu-button-download"}
-                        size="xxl" variant="primary"
-                        onClick={() => setShowDownload(true)}>Download</Button>
-            </div>
+            <Navbar bg="light" variant="light" className="navbar_custom">
+                <Navbar.Brand><Image className="titleimage" src={logo} rounded/></Navbar.Brand>
+                <Nav className="mr-auto">
+                    <Nav.Link className="header_link" onClick={() => setShowHelp(true)}>Info</Nav.Link>
+                    <Nav.Link className="header_link" onClick={() => setShowFeatures(true)}>Features</Nav.Link>
+                    <Nav.Link className="header_link" onClick={() => setImpressum(true)}>Impressum</Nav.Link>
+                    <Nav.Link className={files.length < 1 ? "header_link download-link invisible" : "header_link download-link"} onClick={() => setShowDownload(true)}>Download</Nav.Link>
+                </Nav>
+            </Navbar>
             <div className={distances.length > 0 ? "trackinfo" : "trackinfo invisible"}>
                 <ListGroup defaultActiveKey="#link1">
                     <ListGroup.Item>Tracklänge</ListGroup.Item>
                     {distances.map((dist, id) => {
-                        return <ListGroup.Item>{id + 1}: {dist} km</ListGroup.Item>
+                        return <ListGroup.Item className="custom_list_item" key={id}>Track {id + 1}: {dist} km</ListGroup.Item>
                     })}
                 </ListGroup>
             </div>
@@ -153,8 +142,6 @@ function MapView() {
                         <p>Es werden keine Daten gespeichert</p>
 
                         <p>Optimiert für Desktop</p>
-
-
                     </Modal.Body>
                 </Modal>
                 <Modal
@@ -236,10 +223,6 @@ function MapView() {
                 <ZoomControl position="topright"/>
                 <GPXPolylines userTrackData={userTrackData}/>
             </Map>
-            <div className="footer">
-                <Button className="menu-button-impressum" size="xl" variant="secondary"
-                        onClick={() => setImpressum(true)}>Impressum</Button>
-            </div>
         </div>
     )
 
