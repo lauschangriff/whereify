@@ -192,7 +192,9 @@ function MapView() {
                             <p>Angaben gemäß § 5 TMG</p>
                             <p>Alexander Lotz <br/>
                                 Argelsrieder Straße 52<br/>
-                                81475 München</p>
+                                81475 München<br/>
+                                alexlotz [at] posteo.de</p>
+
 
                             <p>Wir verwenden <strong>keine</strong> Cookies und speichern auch keine sonstigen,
                                 nutzerspezifischen Daten. Die GPS Daten werden nur zur Verarbeitung verwendet und nicht
