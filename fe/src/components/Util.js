@@ -45,8 +45,8 @@ export const getBackendHost = () => {
     let port = 5000;
 
     if (window.location.host.includes("localhost")) {
-        return "localhost:" + port;
+        return "http://localhost:" + port;
     } else {
-        return "85.214.102.235:" + port;
+        return "https://85.214.102.235:" + port;
     }
 }

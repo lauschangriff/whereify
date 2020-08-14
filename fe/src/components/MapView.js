@@ -27,7 +27,7 @@ function MapView() {
 
     useEffect(() => {
         if (firstLoad) {
-            axios.get("http://" + getBackendHost() + "/stats/user")
+            axios.get(getBackendHost() + "/stats/user")
                 .then((response) => {
                     console.log("visit count!")
                 });
@@ -46,7 +46,7 @@ function MapView() {
             acceptedFiles[0],
             acceptedFiles[0].name
         );
-        axios.post("http://" + getBackendHost() + "/locations/pathweb", formData)
+        axios.post(getBackendHost() + "/locations/pathweb", formData)
             .then((response) => {
                 let gpxData = response.data.points;
                 distances.push(response.data.distance)
