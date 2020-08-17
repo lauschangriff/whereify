@@ -4,11 +4,6 @@ from bson.json_util import dumps
 from be.worker.gpx import GPX
 from be.worker.mongodb import MongoDBWorker
 from be.worker.distanceutil import DistanceUtil
-from OpenSSL import SSL
-
-context = SSL.Context(SSL.SSLv23_METHOD)
-context.use_privatekey_file('/etc/apache2/ssl/gpxtool.de.key')
-context.use_certificate_file('gpxtool.de.crt')
 
 app = Flask(__name__)
 CORS(app)
@@ -61,4 +56,4 @@ def route_get_merged_file():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True, ssl_context=context)
+    app.run(host='0.0.0.0', port=5000)
