@@ -47,6 +47,6 @@ export const getBackendHost = () => {
     if (window.location.host.includes("localhost")) {
         return "http://localhost:" + port;
     } else {
-        return "https://85.214.102.235:" + port;
+        return "https://gpxtool.de:" + port;
     }
 }
