@@ -4,8 +4,10 @@ from bson.json_util import dumps
 from be.worker.gpx import GPX
 from be.worker.mongodb import MongoDBWorker
 from be.worker.distanceutil import DistanceUtil
+from flask_sslify import SSLify
 
 app = Flask(__name__)
+sslify = SSLify(app)
 CORS(app)
 
 
