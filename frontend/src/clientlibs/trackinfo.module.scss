@@ -1,0 +1,22 @@
+.trackinfo {
+  position: fixed;
+  bottom: 70px;
+  z-index: 1000;
+  margin-top: 10px;
+  right: 50px;
+}
+
+.trackinfo_invisible {
+  display: none;
+  position: fixed;
+  bottom: 70px;
+  z-index: 1000;
+  margin-top: 10px;
+  right: 50px;
+}
+
+.custom_list_item {
+  background-color: #5D147C !important;
+  color: white;
+  font-size: 14px;
+}

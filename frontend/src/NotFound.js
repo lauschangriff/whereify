@@ -1,9 +1,9 @@
 import React from 'react';
-import './clientlibs/notfound.scss'
+import style from './clientlibs/notfound.scss'
 
 function NotFound() {
     return (
-        <div className="not-found-wrapper">
+        <div className={style.notFoundWrapper}>
             <p>File not Found</p>
         </div>
     );

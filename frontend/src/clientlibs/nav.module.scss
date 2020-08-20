@@ -1,0 +1,42 @@
+.navbar_custom{
+  position: absolute !important;
+  z-index: 1000;
+  width: 100%;
+}
+
+.titleimage {
+  width: 230px;
+}
+
+.header_link {
+  font-size: 28px;
+  margin-right: 15px;
+}
+
+.header_link-invisible {
+  display: none;
+  font-size: 28px;
+  margin-right: 15px;
+}
+
+.download-link {
+  color: #5D147C !important;
+  font-weight: bold !important;
+}
+
+.download-link_invisible {
+  display: none;
+  color: #5D147C !important;
+  font-weight: bold !important;
+}
+
+.header-download {
+  color: #5D147C !important;
+  font-weight: bold !important;
+  font-size: 28px!important;
+  margin-right: 15px!important;
+}
+
+.invisible {
+  display: none !important;
+}

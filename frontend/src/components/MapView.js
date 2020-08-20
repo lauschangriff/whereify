@@ -4,8 +4,15 @@ import axios from 'axios';
 import Dropzone from 'react-dropzone'
 import {Button, Modal, Image, ListGroup, Navbar, Nav} from "react-bootstrap";
 import GPXPolylines from "./GPXPolylines";
-import {getBackendHost, getLatLngCenter} from "./Util";
+import {getLatLngCenter} from "./Util";
 import logo from '../assets/logo.png'
+import navstyle from '../clientlibs/nav.module.scss';
+import trackstyle from '../clientlibs/trackinfo.module.scss';
+import menustyle from '../clientlibs/menu.module.scss';
+import modalstyle from '../clientlibs/modal.module.scss';
+import dropstyle from '../clientlibs/dropzone.module.scss'
+import '../clientlibs/leaflet-custom.css'
+import '../clientlibs/merger.scss'
 
 
 const {BaseLayer} = LayersControl
@@ -20,14 +27,14 @@ function MapView() {
     const [showHelp, setShowHelp] = useState(false);
     const [showFeatures, setShowFeatures] = useState(false);
     const [showImpressum, setImpressum] = useState(false);
-    const [distances, setDistances] = useState([]);
+    const [distances] = useState([]);
 
     let firstLoad = true;
 
 
     useEffect(() => {
         if (firstLoad) {
-            axios.get(getBackendHost() + "/stats/user")
+            axios.get("api/user")
                 .then((response) => {
                     console.log("visit count!")
                 });
@@ -46,7 +53,7 @@ function MapView() {
             acceptedFiles[0],
             acceptedFiles[0].name
         );
-        axios.post(getBackendHost() + "/locations/pathweb", formData)
+        axios.post("api/pathweb", formData)
             .then((response) => {
                 let gpxData = response.data.points;
                 distances.push(response.data.distance)
@@ -72,7 +79,7 @@ function MapView() {
             fd.append('file', k, k.name);
         }
 
-        axios.post("http://" + getBackendHost() + "/locations/createmergedfile", fd)
+        axios.post("api/createmergedfile", fd)
             .then((response) => {
                 let data = new Blob([response.data], {type: 'text/xml'});
                 const element = document.createElement("a");
@@ -86,24 +93,27 @@ function MapView() {
 
     return (
         <div>
-            <Navbar bg="light" variant="light" className="navbar_custom">
-                <Navbar.Brand><Image className="titleimage" src={logo} rounded/></Navbar.Brand>
+            <Navbar bg="light" variant="light" className={navstyle.navbar_custom}>
+                <Navbar.Brand><Image className={navstyle.titleimage} src={logo} rounded/></Navbar.Brand>
                 <Nav className="mr-auto">
-                    <Nav.Link className="header_link" onClick={() => setShowHelp(true)}>Info</Nav.Link>
-                    <Nav.Link className="header_link" onClick={() => setShowFeatures(true)}>Features</Nav.Link>
-                    <Nav.Link className="header_link" onClick={() => setImpressum(true)}>Impressum</Nav.Link>
-                    <Nav.Link className={files.length < 1 ? "header_link download-link invisible" : "header_link download-link"} onClick={() => setShowDownload(true)}>Download</Nav.Link>
+                    <Nav.Link className={navstyle.header_link} onClick={() => setShowHelp(true)}>Info</Nav.Link>
+                    <Nav.Link className={navstyle.header_link} onClick={() => setShowFeatures(true)}>Features</Nav.Link>
+                    <Nav.Link className={navstyle.header_link} onClick={() => setImpressum(true)}>Impressum</Nav.Link>
+                    <Nav.Link
+                        className={ files.length < 1 ? navstyle.invisible : navstyle.headerDownload}
+                        onClick={() => setShowDownload(true)}>Download</Nav.Link>
                 </Nav>
             </Navbar>
-            <div className={distances.length > 0 ? "trackinfo" : "trackinfo invisible"}>
+            <div className={distances.length > 0 ? trackstyle.trackinfo : trackstyle.trackinfo_invisible}>
                 <ListGroup defaultActiveKey="#link1">
                     <ListGroup.Item>Tracklänge</ListGroup.Item>
                     {distances.map((dist, id) => {
-                        return <ListGroup.Item className="custom_list_item" key={id}>Track {id + 1}: {dist} km</ListGroup.Item>
+                        return <ListGroup.Item className={trackstyle.custom_list_item}
+                                               key={id}>Track {id + 1}: {dist} km</ListGroup.Item>
                     })}
                 </ListGroup>
             </div>
-            <div className="menu-box">
+            <div className={menustyle.menubox}>
                 <Modal
                     show={showDownload}
                     onHide={() => setShowDownload(false)}
@@ -116,7 +126,7 @@ function MapView() {
                             <h1>Zusammengeführte Datei herunterladen</h1>
                         </Modal.Title>
                     </Modal.Header>
-                    <Modal.Body className="modalStyleBody">
+                    <Modal.Body className={modalstyle.modalStyleBody}>
                         <Button variant="dark" size="xxl" onClick={createFile}>DOWNLOAD</Button>
                     </Modal.Body>
                 </Modal>
@@ -132,7 +142,7 @@ function MapView() {
                             <h1>Wie funktioniert es?</h1>
                         </Modal.Title>
                     </Modal.Header>
-                    <Modal.Body className="modalStyleBody">
+                    <Modal.Body className={modalstyle.modalStyleBody}>
                         <p>Die App befindet sich noch im Entwicklungstatus, keine Garantie für Richtigkeit der
                             Daten!</p>
 
@@ -156,7 +166,7 @@ function MapView() {
                             <h1>Features</h1>
                         </Modal.Title>
                     </Modal.Header>
-                    <Modal.Body className="modalStyleBody">
+                    <Modal.Body className={modalstyle.modalStyleBody}>
                         <p>- GPX Files auf der Karte ansehen</p>
                         <p>- Files zusammenführen</p>
                         <hr/>
@@ -174,7 +184,7 @@ function MapView() {
                             <h1>Impressum</h1>
                         </Modal.Title>
                     </Modal.Header>
-                    <Modal.Body className="modalStyleBody">
+                    <Modal.Body className={modalstyle.modalStyleBody}>
                         <div className='impressum'>
                             <p>Angaben gemäß § 5 TMG</p>
                             <p>Alexander Lotz <br/>
@@ -195,13 +205,14 @@ function MapView() {
                         </div>
                     </Modal.Body>
                 </Modal>
-                <section className="container">
+                <section className={dropstyle.container}>
                     <Dropzone onDrop={acceptedFiles => handleFile(acceptedFiles)}>
                         {({getRootProps, getInputProps}) => (
                             <section>
-                                <div {...getRootProps()} className="dropzone">
+                                <div {...getRootProps()} className={dropstyle.dropzone}>
                                     <input {...getInputProps()} />
-                                    <p className="inner_font"><strong>.gpx Datei hinzufügen</strong> [Drag'n'Drop oder
+                                    <p className={dropstyle.inner_font}><strong>.gpx Datei
+                                        hinzufügen</strong> [Drag'n'Drop oder
                                         Klick]</p>
                                 </div>
                             </section>

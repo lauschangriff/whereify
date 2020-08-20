@@ -1,6 +1,5 @@
 import React from 'react';
 import MapView from './components/MapView';
-import './index.scss';
 
 function Merger() {
     return (

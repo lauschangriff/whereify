@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Merger from './Merger';
 import {Router, Switch, Route} from "react-router";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import history from "./history";
 import NotFound from "./NotFound";
 
