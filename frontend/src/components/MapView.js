@@ -106,7 +106,7 @@ function MapView() {
             </Navbar>
             <div className={distances.length > 0 ? trackstyle.trackinfo : trackstyle.trackinfo_invisible}>
                 <ListGroup defaultActiveKey="#link1">
-                    <ListGroup.Item>Tracklänge</ListGroup.Item>
+                    <ListGroup.Item>length of track</ListGroup.Item>
                     {distances.map((dist, id) => {
                         return <ListGroup.Item className={trackstyle.custom_list_item}
                                                key={id}>Track {id + 1}: {dist} km</ListGroup.Item>
@@ -123,7 +123,7 @@ function MapView() {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="example-custom-modal-styling-title">
-                            <h1>Zusammengeführte Datei herunterladen</h1>
+                            <h1>download merged file</h1>
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body className={modalstyle.modalStyleBody}>
@@ -139,19 +139,11 @@ function MapView() {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="example-custom-modal-styling-title">
-                            <h1>Wie funktioniert es?</h1>
+                            <h1>how it works</h1>
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body className={modalstyle.modalStyleBody}>
-                        <p>Die App befindet sich noch im Entwicklungstatus, keine Garantie für Richtigkeit der
-                            Daten!</p>
-
-                        <p>Um die Dateien zusammen zu führen einfach mehrere .gpx Dateien auf die vorgesehene Fläche
-                            ziehen und anschließend auf den Download Button klicken</p>
-
-                        <p>Es werden keine Daten gespeichert</p>
-
-                        <p>Optimiert für Desktop</p>
+                        <p>add description here...</p>
                     </Modal.Body>
                 </Modal>
                 <Modal
@@ -186,16 +178,7 @@ function MapView() {
                     </Modal.Header>
                     <Modal.Body className={modalstyle.modalStyleBody}>
                         <div className='impressum'>
-                            <p>Angaben gemäß § 5 TMG</p>
-                            <p>Alexander Lotz <br/>
-                                Argelsrieder Straße 52<br/>
-                                81475 München<br/>
-                                alexlotz [at] posteo.de</p>
-
-
-                            <p>Wir verwenden <strong>keine</strong> Cookies und speichern auch keine sonstigen,
-                                nutzerspezifischen Daten. Die GPS Daten werden nur zur Verarbeitung verwendet und nicht
-                                persistiert.</p>
+                            <p>TODO add impressum here</p>
                             <p>Made with</p>
                             <ul>
                                 <li>React - https://reactjs.org/</li>

@@ -6,10 +6,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - 80:80
-      - 443:443
-    volumes:
-      - ./certs:/etc/nginx/certs
+      - 9090:80
 
   backend:
     container_name: backend
