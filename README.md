@@ -1,12 +1,8 @@
-# whereify
+# GPX Merger
 
-### **mongoDb**
-https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
+GPX Merger tool based on python, react and nginx webserver
 
-start mongodb
-
-`brew services start mongodb-community@4.2`
-
-stop mongodb
-
-`brew services stop mongodb-community@4.2`
+### install
+1. Clone the repository
+2. run docker-compose up
+3. access localhost:9090

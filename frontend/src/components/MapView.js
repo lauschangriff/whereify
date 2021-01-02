@@ -159,8 +159,8 @@ function MapView() {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body className={modalstyle.modalStyleBody}>
-                        <p>- GPX Files auf der Karte ansehen</p>
-                        <p>- Files zusammenführen</p>
+                        <p>- todo</p>
+                        <p>- todo</p>
                         <hr/>
                     </Modal.Body>
                 </Modal>
