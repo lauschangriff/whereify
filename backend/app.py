@@ -7,9 +7,6 @@ from bson.json_util import dumps
 
 app = Flask(__name__)
 
-#client = MongoClient(host="0.0.0.0", port=27017)
-#db = client.wherify
-
 CORS(app)
 
 
