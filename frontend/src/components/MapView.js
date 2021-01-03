@@ -29,16 +29,8 @@ function MapView() {
     const [showImpressum, setImpressum] = useState(false);
     const [distances] = useState([]);
 
-    let firstLoad = true;
-
 
     useEffect(() => {
-        if (firstLoad) {
-            axios.get("api/user")
-                .then((response) => {
-                    console.log("visit count!")
-                });
-        }
         setCurrentLocation(currentLocation);
     }, [currentLocation]);
 

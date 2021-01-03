@@ -48,16 +48,6 @@ def calculate_distance_of_track(trkpoints):
     return round(dist, 2)
 
 
-@app.route('/api/user', methods=['GET'])
-def route_handle_page_visit():
-    print("stats/user called")
-    # save date of visit
-    # usercount = db.usercount
-    # countitem = {"date": datetime.datetime.utcnow()}
-    # usercount.insert_one(countitem)
-    return jsonify(success=True)
-
-
 @app.route('/api/createmergedfile', methods=['POST'])
 def route_get_merged_file():
     trks = []
